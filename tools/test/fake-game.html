@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><style>.hidden{display:none}#cnew .opt{display:inline-block;padding:4px;border:1px solid #888;margin:2px}#cnew .opt.on{background:#fc0}</style></head>
+<body>
+<div id="ngTitle"><button id="ngStart">Bắt Đầu Trò Chơi</button><button id="bReg">Đăng Ký</button><button>Quên Mật Mã</button></div>
+<div id="modal" class="hidden"><button id="mClose">x</button><div id="mBody"></div></div>
+<div id="cnew" class="hidden"><h3>Tạo nhân vật</h3>
+  <div class="row">Giới tính: <span class="opt" data-sex="0">Nam</span><span class="opt" data-sex="1">Nữ</span></div>
+  <div class="row">Ngũ hành: <span class="opt" data-he="0">Kim</span><span class="opt" data-he="1">Mộc</span><span class="opt" data-he="2">Thủy</span><span class="opt" data-he="3">Hỏa</span><span class="opt" data-he="4">Thổ</span></div>
+  <p>Hệ Hỏa: Thiên Nhẫn, Cái Bang</p>
+  <input type="text" id="cnName" maxlength="12"><button id="cnGo">Tạo Nhân Vật</button></div>
+<div id="csel" class="hidden"><div class="cs-slot on" data-i="0"></div><button id="csGo">Vào Game</button></div>
+<div id="heroName">Võ Lâm Idle</div><div id="stageLbl"></div>
+<div id="toast"></div><div id="chatBox"><input type="text" id="chatIn"></div>
+<script>
+// ===== máy chủ giả =====
+const SV = { users: { cu: { pass: '123456', chars: [{ name: 'CuCu', he: 1, sex: 0 }] } }, names: new Set(['CuCu', 'con1']) };
+const $ = s => document.querySelector(s); let me = null;
+const toast = t => { $('#toast').textContent = t; clearTimeout(window.__tt); window.__tt = setTimeout(() => $('#toast').textContent = '', 2500); };
+const show = (id, on) => $(id).classList.toggle('hidden', !on);
+window.H5 = { st: {}, G: () => null };
+$('#ngStart').onclick = () => { show('#modal', true); $('#mBody').innerHTML = '<input id="ngU"><input id="ngP" type="password"><button id="ngIn">Đăng Nhập</button>';
+  $('#ngIn').onclick = () => { const u = $('#ngU').value, p = $('#ngP').value, a = SV.users[u]; if (!a || a.pass !== p) { toast('Sai tài khoản hoặc mật khẩu'); return; }
+    me = u; show('#modal', false); show('#ngTitle', false); a.chars.length ? show('#csel', true) : show('#cnew', true); }; };
+$('#bReg').onclick = () => { show('#modal', true); $('#mBody').innerHTML = '<h3>Đăng ký nhanh</h3><input id="rgU" placeholder="Tài khoản"><input id="rgP" type="password"><input id="rgP2" type="password"><button id="rgGo">Đăng Ký</button>';
+  $('#rgGo').onclick = () => { const u = $('#rgU').value, p = $('#rgP').value; if (p !== $('#rgP2').value) return toast('Mật khẩu nhập lại không khớp'); if (SV.users[u]) return toast('Tài khoản đã tồn tại');
+    SV.users[u] = { pass: p, chars: [] }; toast('Đăng ký thành công'); show('#modal', false); }; };
+let sel = { sex: null, he: null };
+for (const o of document.querySelectorAll('#cnew .opt')) o.onclick = () => { const k = o.dataset.sex != null ? 'sex' : 'he'; sel[k] = +o.dataset[k]; for (const x of document.querySelectorAll(`#cnew [data-${k}]`)) x.classList.toggle('on', x === o); };
+$('#cnGo').onclick = () => { const n = $('#cnName').value.trim(); if (sel.sex == null || sel.he == null) return toast('Chọn giới tính và ngũ hành'); if (n.length < 3) return toast('Tên quá ngắn'); if (SV.names.has(n)) return toast('Tên nhân vật đã tồn tại');
+  SV.names.add(n); SV.users[me].chars.push({ name: n, he: sel.he, sex: sel.sex }); show('#cnew', false); show('#csel', true); };
+$('#csGo').onclick = () => { show('#csel', false); $('#heroName').textContent = SV.users[me].chars[0].name; $('#stageLbl').textContent = 'Tương Dương'; };
+</script></body></html>

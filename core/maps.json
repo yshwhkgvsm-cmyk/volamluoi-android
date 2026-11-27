@@ -1,0 +1,1138 @@
+[
+  {
+    "id": 121,
+    "name": "Long Môn trấn",
+    "index": 0,
+    "altIndex": 0,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 53,
+    "name": "Ba Lăng huyện",
+    "index": 0,
+    "altIndex": 1,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 99,
+    "name": "Vĩnh Lạc trấn",
+    "index": 0,
+    "altIndex": 2,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 100,
+    "name": "Chu Tiên trấn",
+    "index": 0,
+    "altIndex": 3,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 101,
+    "name": "Đạo Hương thôn",
+    "index": 0,
+    "altIndex": 4,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 153,
+    "name": "Thạch Cổ trấn",
+    "index": 0,
+    "altIndex": 5,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 174,
+    "name": "Long Tuyền thôn",
+    "index": 0,
+    "altIndex": 6,
+    "minLevel": 1,
+    "maxLevel": 10
+  },
+  {
+    "id": 2,
+    "name": "Hoa Sơn",
+    "index": 1,
+    "altIndex": 0,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 195,
+    "name": "Nhạn Đãng sơn",
+    "index": 1,
+    "altIndex": 1,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 140,
+    "name": "Dược Vương Cốc",
+    "index": 1,
+    "altIndex": 2,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 1,
+    "name": "Phượng Tường",
+    "index": 1,
+    "altIndex": 3,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 11,
+    "name": "Thành Đô",
+    "index": 1,
+    "altIndex": 4,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 13,
+    "name": "Nga My phái",
+    "index": 1,
+    "altIndex": 5,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 45,
+    "name": "Thiên Nhẫn giáo",
+    "index": 1,
+    "altIndex": 6,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 46,
+    "name": "Thiên Nhẫn Giáo tầng 1",
+    "index": 1,
+    "altIndex": 7,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 47,
+    "name": "Thiên Nhẫn Giáo tầng 2",
+    "index": 1,
+    "altIndex": 8,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 48,
+    "name": "Thiên Nhẫn Giáo tầng 2",
+    "index": 1,
+    "altIndex": 9,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 50,
+    "name": "Thất Sát động",
+    "index": 1,
+    "altIndex": 10,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 54,
+    "name": "Nam Nhạc trấn",
+    "index": 1,
+    "altIndex": 11,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 59,
+    "name": "Thiên Vương Bang",
+    "index": 1,
+    "altIndex": 12,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 65,
+    "name": "Thiên Vương đảo sơn động",
+    "index": 1,
+    "altIndex": 13,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 78,
+    "name": "Tương Dương",
+    "index": 1,
+    "altIndex": 14,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 80,
+    "name": "Dương Châu",
+    "index": 1,
+    "altIndex": 15,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 81,
+    "name": "Võ Đang phái",
+    "index": 1,
+    "altIndex": 16,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 82,
+    "name": "Mê cung Đáy giếng",
+    "index": 1,
+    "altIndex": 17,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 103,
+    "name": "Thiếu Lâm phái",
+    "index": 1,
+    "altIndex": 18,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 131,
+    "name": "Côn Lôn phái",
+    "index": 1,
+    "altIndex": 19,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 154,
+    "name": "Thúy Yên môn",
+    "index": 1,
+    "altIndex": 20,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 162,
+    "name": "Đại Lý",
+    "index": 1,
+    "altIndex": 21,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 176,
+    "name": "Lâm An",
+    "index": 1,
+    "altIndex": 22,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 183,
+    "name": "Ngũ Độc Giáo",
+    "index": 1,
+    "altIndex": 23,
+    "minLevel": 10,
+    "maxLevel": 20
+  },
+  {
+    "id": 3,
+    "name": "Kiếm Các Tây Bắc",
+    "index": 2,
+    "altIndex": 0,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 7,
+    "name": "Tần Lăng",
+    "index": 2,
+    "altIndex": 1,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 19,
+    "name": "Kiếm Các Tây Nam",
+    "index": 2,
+    "altIndex": 2,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 70,
+    "name": "Vũ Lăng sơn",
+    "index": 2,
+    "altIndex": 3,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 43,
+    "name": "Kiếm Các Trung Nguyên",
+    "index": 2,
+    "altIndex": 4,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 179,
+    "name": "La Tiêu sơn",
+    "index": 2,
+    "altIndex": 5,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 14,
+    "name": "Mãnh Hổ động",
+    "index": 2,
+    "altIndex": 6,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 71,
+    "name": "Bạch Thủy động",
+    "index": 2,
+    "altIndex": 7,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 73,
+    "name": "Phục Lưu động",
+    "index": 2,
+    "altIndex": 8,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 83,
+    "name": "Hỏa Lang động",
+    "index": 2,
+    "altIndex": 9,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 115,
+    "name": "Cái Bang",
+    "index": 2,
+    "altIndex": 10,
+    "minLevel": 20,
+    "maxLevel": 30
+  },
+  {
+    "id": 92,
+    "name": "Thục Cương sơn",
+    "index": 3,
+    "altIndex": 0,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 90,
+    "name": "Phục Ngưu Sơn Đông",
+    "index": 3,
+    "altIndex": 1,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 193,
+    "name": "Vũ Di sơn",
+    "index": 3,
+    "altIndex": 2,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 74,
+    "name": "Miêu Lĩnh",
+    "index": 3,
+    "altIndex": 3,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 145,
+    "name": "Tuyết Báo động tầng 1",
+    "index": 3,
+    "altIndex": 4,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 4,
+    "name": "Kim Quang động",
+    "index": 3,
+    "altIndex": 5,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 8,
+    "name": "Lăng Tần Thủy Hoàng",
+    "index": 3,
+    "altIndex": 6,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 22,
+    "name": "Bạch Vân động",
+    "index": 3,
+    "altIndex": 7,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 77,
+    "name": "Yến Tử động",
+    "index": 3,
+    "altIndex": 8,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 136,
+    "name": "Khoái Hoạt Lâm",
+    "index": 3,
+    "altIndex": 9,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 141,
+    "name": "Dược Vương động tầng 1",
+    "index": 3,
+    "altIndex": 10,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 146,
+    "name": "Tuyết Báo động tầng 2",
+    "index": 3,
+    "altIndex": 11,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 170,
+    "name": "Thổ Phỉ động",
+    "index": 3,
+    "altIndex": 12,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 190,
+    "name": "Mê cung nhập môn",
+    "index": 3,
+    "altIndex": 13,
+    "minLevel": 30,
+    "maxLevel": 40
+  },
+  {
+    "id": 171,
+    "name": "Điểm Thương động tầng 1",
+    "index": 4,
+    "altIndex": 0,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 41,
+    "name": "Phục Ngưu Sơn Tây",
+    "index": 4,
+    "altIndex": 1,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 122,
+    "name": "Hoàng Hà Nguyên Đầu",
+    "index": 4,
+    "altIndex": 2,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 5,
+    "name": "Kinh Hoàng động",
+    "index": 4,
+    "altIndex": 3,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 23,
+    "name": "Thần Tiên động",
+    "index": 4,
+    "altIndex": 4,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 91,
+    "name": "Mê cung Kê Quán động",
+    "index": 4,
+    "altIndex": 5,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 135,
+    "name": "Kiến Tính Phong sơn động",
+    "index": 4,
+    "altIndex": 6,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 168,
+    "name": "Phụng Nhãn động",
+    "index": 4,
+    "altIndex": 7,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 172,
+    "name": "Điểm Thương động tầng 2",
+    "index": 4,
+    "altIndex": 8,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 173,
+    "name": "Điểm Thương động tầng 3",
+    "index": 4,
+    "altIndex": 9,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 180,
+    "name": "Long Cung động",
+    "index": 4,
+    "altIndex": 10,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 6,
+    "name": "Tỏa Vân động",
+    "index": 4,
+    "altIndex": 11,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 167,
+    "name": "Điểm Thương sơn",
+    "index": 4,
+    "altIndex": 12,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 21,
+    "name": "Thanh Thành Sơn",
+    "index": 4,
+    "altIndex": 13,
+    "minLevel": 40,
+    "maxLevel": 50
+  },
+  {
+    "id": 42,
+    "name": "Thiên Tâm động",
+    "index": 5,
+    "altIndex": 0,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 24,
+    "name": "Hưởng Thủy động",
+    "index": 5,
+    "altIndex": 1,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 66,
+    "name": "Đáy Động Đình hồ tầng 1",
+    "index": 5,
+    "altIndex": 2,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 67,
+    "name": "Đáy Động Đình hồ tầng 2",
+    "index": 5,
+    "altIndex": 3,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 116,
+    "name": "Tường Vân động tầng 1",
+    "index": 5,
+    "altIndex": 4,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 125,
+    "name": "Lưu Tiên động tầng 1",
+    "index": 5,
+    "altIndex": 5,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 132,
+    "name": "Băng Huyệt động",
+    "index": 5,
+    "altIndex": 6,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 147,
+    "name": "Tuyết Báo động tầng 3",
+    "index": 5,
+    "altIndex": 7,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 164,
+    "name": "Thiên Tầm tháp tầng 1",
+    "index": 5,
+    "altIndex": 8,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 165,
+    "name": "Thiên Tầm tháp tầng 2",
+    "index": 5,
+    "altIndex": 9,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 182,
+    "name": "Nghiệt Long động",
+    "index": 5,
+    "altIndex": 10,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 194,
+    "name": "Ngọc Hoa động",
+    "index": 5,
+    "altIndex": 11,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 163,
+    "name": "Ác bá địa đạo",
+    "index": 5,
+    "altIndex": 12,
+    "minLevel": 50,
+    "maxLevel": 60
+  },
+  {
+    "id": 56,
+    "name": "Hoành Sơn Phái",
+    "index": 6,
+    "altIndex": 0,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 68,
+    "name": "Thanh Loa đảo",
+    "index": 6,
+    "altIndex": 1,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 26,
+    "name": "Trúc Tơ động tầng 1",
+    "index": 6,
+    "altIndex": 2,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 51,
+    "name": "Thánh động tầng 1",
+    "index": 6,
+    "altIndex": 3,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 52,
+    "name": "Thánh động tầng 2",
+    "index": 6,
+    "altIndex": 4,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 117,
+    "name": "Tường Vân động tầng 2",
+    "index": 6,
+    "altIndex": 5,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 118,
+    "name": "Tường Vân động tầng 3",
+    "index": 6,
+    "altIndex": 6,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 119,
+    "name": "Tường Vân động tầng 4",
+    "index": 6,
+    "altIndex": 7,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 126,
+    "name": "Lưu Tiên động tầng 2",
+    "index": 6,
+    "altIndex": 8,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 127,
+    "name": "Lưu Tiên động tầng 3",
+    "index": 6,
+    "altIndex": 9,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 128,
+    "name": "Lưu Tiên động tầng 4",
+    "index": 6,
+    "altIndex": 10,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 148,
+    "name": "Tuyết Báo động tầng 4",
+    "index": 6,
+    "altIndex": 11,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 158,
+    "name": "Mê cung cấm địa",
+    "index": 6,
+    "altIndex": 12,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 166,
+    "name": "Thiên Tầm tháp tầng 3",
+    "index": 6,
+    "altIndex": 13,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 196,
+    "name": "Dương Giác động",
+    "index": 6,
+    "altIndex": 14,
+    "minLevel": 60,
+    "maxLevel": 70
+  },
+  {
+    "id": 319,
+    "name": "Lâm Du Quan",
+    "index": 7,
+    "altIndex": 0,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 72,
+    "name": "Đại Tù động",
+    "index": 7,
+    "altIndex": 1,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 120,
+    "name": "Tường Vân động tầng 5",
+    "index": 7,
+    "altIndex": 2,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 129,
+    "name": "Lưu Tiên động tầng 5",
+    "index": 7,
+    "altIndex": 3,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 142,
+    "name": "Dược Vương động tầng 2",
+    "index": 7,
+    "altIndex": 4,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 130,
+    "name": "Lưu Tiên động tầng 6",
+    "index": 7,
+    "altIndex": 5,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 55,
+    "name": "Đào Hoa Nguyên",
+    "index": 7,
+    "altIndex": 6,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 76,
+    "name": "Sơn Bảo động",
+    "index": 7,
+    "altIndex": 7,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 206,
+    "name": "Tần Lăng tầng 2",
+    "index": 7,
+    "altIndex": 8,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 169,
+    "name": "Long Nhãn động",
+    "index": 7,
+    "altIndex": 9,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 123,
+    "name": "Lão Hổ động",
+    "index": 7,
+    "altIndex": 10,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 94,
+    "name": "Linh Cốc động",
+    "index": 7,
+    "altIndex": 11,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 27,
+    "name": "Trúc Tơ động tầng 2",
+    "index": 7,
+    "altIndex": 12,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 69,
+    "name": "Thanh Loa đảo sơn động",
+    "index": 7,
+    "altIndex": 13,
+    "minLevel": 70,
+    "maxLevel": 80
+  },
+  {
+    "id": 320,
+    "name": "Chân núi Trường Bạch",
+    "index": 8,
+    "altIndex": 0,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 143,
+    "name": "Dược Vương động tầng 3",
+    "index": 8,
+    "altIndex": 1,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 150,
+    "name": "Tuyết Báo động tầng 6",
+    "index": 8,
+    "altIndex": 2,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 181,
+    "name": "Lưỡng Thủy động",
+    "index": 8,
+    "altIndex": 3,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 199,
+    "name": "Vũ Lăng động",
+    "index": 8,
+    "altIndex": 4,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 200,
+    "name": "Cổ Dương động",
+    "index": 8,
+    "altIndex": 5,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 204,
+    "name": "Phi Thiên động",
+    "index": 8,
+    "altIndex": 6,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 207,
+    "name": "Tần Lăng tầng 3",
+    "index": 8,
+    "altIndex": 7,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 205,
+    "name": "Dương Trung động",
+    "index": 8,
+    "altIndex": 8,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 201,
+    "name": "Băng Hà động",
+    "index": 8,
+    "altIndex": 9,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 203,
+    "name": "Vô Danh động",
+    "index": 8,
+    "altIndex": 10,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 202,
+    "name": "Phù Dung động",
+    "index": 8,
+    "altIndex": 11,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 198,
+    "name": "Thanh khê động",
+    "index": 8,
+    "altIndex": 12,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 10,
+    "name": "Nhạn Thạch động",
+    "index": 8,
+    "altIndex": 13,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 224,
+    "name": "Sa mạc địa biểu",
+    "index": 8,
+    "altIndex": 14,
+    "minLevel": 80,
+    "maxLevel": 90
+  },
+  {
+    "id": 225,
+    "name": "Sa mạc sơn động 1",
+    "index": 9,
+    "altIndex": 0,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 124,
+    "name": "Cán Viên động",
+    "index": 9,
+    "altIndex": 1,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 144,
+    "name": "Dược Vương động tầng 4",
+    "index": 9,
+    "altIndex": 2,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 152,
+    "name": "Tuyết Báo động tầng 8",
+    "index": 9,
+    "altIndex": 3,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 340,
+    "name": "Mạc Cao Quật",
+    "index": 9,
+    "altIndex": 4,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 227,
+    "name": "Sa mạc sơn động 3",
+    "index": 9,
+    "altIndex": 5,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 75,
+    "name": "Khoả Lang động",
+    "index": 9,
+    "altIndex": 6,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 93,
+    "name": "Tiến Cúc động",
+    "index": 9,
+    "altIndex": 7,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 875,
+    "name": "Hắc Sa động",
+    "index": 9,
+    "altIndex": 8,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 226,
+    "name": "Sa mạc sơn động 2",
+    "index": 9,
+    "altIndex": 9,
+    "minLevel": 90,
+    "maxLevel": 100
+  },
+  {
+    "id": 321,
+    "name": "Trường Bạch sơn Nam",
+    "index": 10,
+    "altIndex": 0,
+    "minLevel": 110,
+    "maxLevel": 120
+  },
+  {
+    "id": 322,
+    "name": "Trường Bạch sơn Bắc",
+    "index": 10,
+    "altIndex": 1,
+    "minLevel": 110,
+    "maxLevel": 120
+  },
+  {
+    "id": 336,
+    "name": "Phong Lăng độ",
+    "index": 11,
+    "altIndex": 0,
+    "minLevel": 120,
+    "maxLevel": 130
+  },
+  {
+    "id": 341,
+    "name": "Mạc Bắc Thảo Nguyên",
+    "index": 12,
+    "altIndex": 0,
+    "minLevel": 130,
+    "maxLevel": 140
+  },
+  {
+    "id": 342,
+    "name": "Vi sơn đảo",
+    "index": 12,
+    "altIndex": 1,
+    "minLevel": 130,
+    "maxLevel": 140
+  }
+]

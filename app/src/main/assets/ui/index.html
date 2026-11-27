@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Võ Lâm Lười Android</title>
+<style>
+:root{--bg:#f4efe6;--card:#fffdf8;--ink:#2a2118;--mu:#7a6a58;--line:#e2d6c3;--acc:#a8321e;--ok:#1f7a3a;--bad:#b3261e;--warn:#9a6700}
+@media (prefers-color-scheme:dark){:root{--bg:#17130f;--card:#221c16;--ink:#efe6d8;--mu:#a8987f;--line:#3a3027;--acc:#e06a4c;--ok:#5fc27e;--bad:#ff8a80;--warn:#e0b44c}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--acc);color:#fff;padding:10px 14px 0}
+header h1{margin:0;font-size:17px;letter-spacing:.2px}header h1 small{opacity:.8;font-weight:400;font-size:12px}
+nav{display:flex;gap:2px;margin-top:8px}nav button{flex:1;background:transparent;border:0;color:#fff;opacity:.75;padding:9px 4px;font-size:14px;border-bottom:3px solid transparent}
+nav button.on{opacity:1;border-bottom-color:#fff;font-weight:600}
+main{padding:12px;padding-bottom:40px}section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}
+.card h2{margin:0 0 8px;font-size:15px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+label{display:flex;gap:6px;align-items:center}
+input,select,textarea{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px}
+input[type=number]{width:84px}input.w{flex:1;min-width:120px}textarea{width:100%;min-height:80px}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--acc)}
+button.b{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:9px 14px}
+button.p{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+button.big{width:100%;padding:14px;font-size:17px}
+.mu{color:var(--mu);font-size:13px}.ok{color:var(--ok)}.bad{color:var(--bad)}.warn{color:var(--warn)}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.stat b{display:block;font-size:20px}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.slot{border:1px solid var(--line);border-radius:10px;padding:8px;min-height:72px;background:var(--bg)}
+.slot b{display:block}.slot .st{font-size:13px}.slot.empty{opacity:.45}
+.chips{display:flex;flex-wrap:wrap;gap:6px}.chips button{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 11px;font:inherit;font-size:13px}
+.chips button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.acc{display:grid;grid-template-columns:24px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.acc:last-child{border-bottom:0}.acc .u{font-weight:600}.tag{font-size:11.5px;padding:1px 7px;border-radius:999px;border:1px solid var(--line);margin-left:4px}
+.log{font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;max-height:60vh;overflow:auto}
+.banner{padding:10px;border-radius:10px;background:#fff3cd;color:#664d03;border:1px solid #ffe08a;margin-bottom:12px;font-size:14px}
+@media (prefers-color-scheme:dark){.banner{background:#332701;color:#ffe08a;border-color:#665100}}
+</style></head>
+<body>
+<header><h1>🔥 Võ Lâm Lười <small>Android · xoay nhóm · đăng ký nhanh · Hỏa Nữ · ủy thác</small></h1>
+<nav><button data-t="run" class="on">Chạy</button><button data-t="acc">Tài khoản</button><button data-t="cfg">Cài đặt</button><button data-t="log">Nhật ký</button></nav></header>
+<main>
+<div id="warn"></div>
+<section id="run" class="on">
+  <div class="card"><button class="b p big" id="go">▶ Chạy</button>
+    <div class="row" style="margin-top:10px"><button class="b" id="viewAll">👁 Xem các ô game</button><span class="mu" id="sum"></span></div></div>
+  <div class="card"><div class="stat"><div><b id="sNhom">–</b><span class="mu">nhóm</span></div><div><b id="sCon">–</b><span class="mu">còn lại</span></div><div><b id="sXong">–</b><span class="mu">xong hôm nay</span></div></div></div>
+  <div class="card"><h2>Các ô đang chạy</h2><div class="slots" id="slots"></div><p class="mu">Chạm 1 ô để xem game của acc đó. Nút Quay lại của điện thoại = về bảng này.</p></div>
+</section>
+<section id="acc">
+  <div class="card"><h2>Thêm nhanh</h2>
+    <div class="row"><input class="w" id="pf" placeholder="tiền tố, vd con" autocapitalize="off"><input type="number" id="a1" value="1" min="0"><span>→</span><input type="number" id="a2" value="8" min="0"></div>
+    <div class="row"><input class="w" id="pw" type="password" placeholder="mật khẩu chung (≥ 6 ký tự)"></div>
+    <div class="row"><label><input type="checkbox" id="chuaDk" checked> Chưa có tài khoản → <b>đăng ký nhanh</b></label></div>
+    <div class="row"><button class="b p" id="add">Thêm</button><span class="mu" id="addMsg"></span></div>
+    <details><summary class="mu">Dán danh sách (mỗi dòng: tài khoản|mật khẩu)</summary><textarea id="list" placeholder="con1|abc123&#10;con2|abc123"></textarea><button class="b" id="addList">Thêm danh sách</button></details>
+  </div>
+  <div class="card"><div class="row"><h2 style="margin:0;flex:1">Danh sách <span class="mu" id="nAcc"></span></h2><button class="b" id="reset">Làm lại hôm nay</button><button class="b" id="del">Xóa đã chọn</button></div>
+    <div id="accs"></div></div>
+</section>
+<section id="cfg">
+  <div class="card"><h2>Xoay nhóm (như LuoiSpeed)</h2>
+    <div class="row">Số acc mỗi nhóm <div class="chips" id="cNhom"></div></div>
+    <div class="row">Thời gian chạy 1 nhóm <input type="number" id="cPhut" min="1" max="180"> phút</div>
+    <div class="chips" id="cPhutQ"></div>
+    <p class="mu">Mỗi nhóm: mở ô → đăng nhập → nhận quà → chơi tới hết thời gian → ủy thác → đóng → nhóm kế.</p>
+    <div class="row"><label><input type="checkbox" id="cLap"> Hết danh sách thì chạy lại từ nhóm đầu</label></div>
+    <div class="row">Chờ vào game tối đa <input type="number" id="cVao" min="1" max="30"> phút / acc</div></div>
+  <div class="card"><h2>Tài khoản mới</h2>
+    <div class="row"><label><input type="checkbox" id="cDk"> Đăng ký nhanh acc chưa có</label></div>
+    <div class="row"><label><input type="checkbox" id="cTao"> Tạo nhân vật khi acc chưa có</label></div>
+    <div class="row">Hệ <select id="cHe"><option value="hoa">Hỏa</option><option value="kim">Kim</option><option value="moc">Mộc</option><option value="thuy">Thủy</option><option value="tho">Thổ</option></select>
+      Giới tính <select id="cSex"><option value="nu">Nữ</option><option value="nam">Nam</option></select></div>
+    <div class="row">Tên nhân vật <select id="cTen"><option value="user">= tên tài khoản</option><option value="tien">tiền tố + số thứ tự</option></select><input class="w" id="cTenTien" placeholder="tiền tố tên, vd HoaNu"></div>
+    <p class="mu">Trùng tên → tự thêm 2 chữ cái rồi thử lại.</p></div>
+  <div class="card"><h2>Việc mỗi acc</h2>
+    <div class="row"><label><input type="checkbox" id="cKnb"> Đổi KNB + quà ngày (điểm danh, mốc cấp…)</label></div>
+    <div class="row"><label><input type="checkbox" id="cHb"> Mở Hồng Bao / Đại Hồng Bao</label></div>
+    <div class="row"><label><input type="checkbox" id="cUt"> Ủy thác cuối nhóm (bỏ tick = đăng xuất)</label></div></div>
+  <div class="card"><h2>Điện thoại</h2>
+    <div class="row"><label><input type="checkbox" id="cAwake"> Giữ màn hình sáng khi đang chạy</label></div>
+    <p class="mu">Nên tắt "Tối ưu pin" cho app (Cài đặt › Ứng dụng › Võ Lâm Lười › Pin › Không hạn chế) để Android không đóng ô game.</p></div>
+</section>
+<section id="log">
+  <div class="card"><div class="row"><h2 style="margin:0;flex:1">Nhật ký</h2><button class="b" id="soi">Gửi bản Soi</button><button class="b" id="clr">Xóa</button></div>
+    <div class="log" id="logs"></div></div>
+</section>
+</main>
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body></html>
