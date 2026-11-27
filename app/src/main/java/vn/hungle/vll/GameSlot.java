@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.webkit.CookieManager;
+import android.webkit.HttpAuthHandler;
 import android.webkit.JavascriptInterface;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.WebChromeClient;
@@ -71,6 +72,11 @@ class GameSlot {
             @Override public void onPageStarted(WebView v, String u, Bitmap f) {
                 url = u == null ? "" : u;
                 if (!early && isGame()) v.evaluateJavascript(act.gameJs, null);   // máy cũ: chèn muộn (có thể lỡ bước đầu)
+            }
+            @Override public void onReceivedHttpAuthRequest(WebView v, HttpAuthHandler h, String host, String realm) {
+                ProxyMan.P p = ProxyMan.cur;   // proxy có mật khẩu hỏi tài khoản → điền tài khoản proxy đang dùng
+                if (p != null && !p.user.isEmpty() && host != null && host.startsWith(p.host)) h.proceed(p.user, p.pass);
+                else h.cancel();
             }
             @Override public boolean onRenderProcessGone(WebView v, RenderProcessGoneDetail d) {
                 act.slotEvent(idx, "crash");

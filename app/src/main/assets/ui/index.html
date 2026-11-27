@@ -41,7 +41,7 @@ button.big{width:100%;padding:14px;font-size:17px}
 <div id="warn"></div>
 <section id="run" class="on">
   <div class="card"><button class="b p big" id="go">▶ Chạy</button>
-    <div class="row" style="margin-top:10px"><button class="b" id="viewAll">👁 Xem các ô game</button><span class="mu" id="sum"></span></div></div>
+    <div class="row" style="margin-top:10px"><button class="b" id="viewAll">👁 Xem các ô game</button><span class="mu" id="sum"></span></div><div id="ipNow"></div></div>
   <div class="card"><div class="stat"><div><b id="sNhom">–</b><span class="mu">nhóm</span></div><div><b id="sCon">–</b><span class="mu">còn lại</span></div><div><b id="sXong">–</b><span class="mu">xong hôm nay</span></div></div></div>
   <div class="card"><h2>Các ô đang chạy</h2><div class="slots" id="slots"></div><p class="mu">Chạm 1 ô để xem game của acc đó. Nút Quay lại của điện thoại = về bảng này.</p></div>
 </section>
@@ -64,6 +64,14 @@ button.big{width:100%;padding:14px;font-size:17px}
     <p class="mu">Mỗi nhóm: mở ô → đăng nhập → nhận quà → chơi tới hết thời gian → ủy thác → đóng → nhóm kế.</p>
     <div class="row"><label><input type="checkbox" id="cLap"> Hết danh sách thì chạy lại từ nhóm đầu</label></div>
     <div class="row">Chờ vào game tối đa <input type="number" id="cVao" min="1" max="30"> phút / acc</div></div>
+  <div class="card"><h2>🌐 Đổi IP theo nhóm (proxy)</h2>
+    <div class="row"><label><input type="checkbox" id="cIp"> <b>Bật</b>: mỗi nhóm dùng 1 IP riêng</label></div>
+    <p class="mu">Nhóm 1 → proxy 1, nhóm 2 → proxy 2… (hết danh sách thì quay lại đầu). Đổi IP lúc mọi ô đã đóng; kiểm IP xong mới mở nhóm. Đặt <b>số acc mỗi nhóm = 3</b> để 3 acc / 1 IP.</p>
+    <textarea id="cProxy" placeholder="Mỗi dòng 1 proxy:&#10;1.2.3.4:8080&#10;1.2.3.4:8080:user:pass&#10;user:pass@proxy.vn:3128&#10;socks5://5.6.7.8:1080" autocapitalize="off" spellcheck="false"></textarea>
+    <div class="mu" id="cProxyInfo"></div>
+    <div class="row">Proxy lỗi hết thì <select id="cIpHet"><option value="dung">dừng chạy</option><option value="that">chạy bằng IP thật</option></select></div>
+    <div class="row"><button class="b" id="cProxyTest">Kiểm tra proxy</button></div><div id="cProxyRes" class="mu"></div>
+    <p class="mu">Android chỉ bật được 1 VPN và app không điều khiển được app VPN khác, nên dùng proxy HTTP/SOCKS5 (nhiều nhà VPN có bán kèm). SOCKS5 có mật khẩu WebView không hỗ trợ → dùng HTTP.</p></div>
   <div class="card"><h2>Tài khoản mới</h2>
     <div class="row"><label><input type="checkbox" id="cDk"> Đăng ký nhanh acc chưa có</label></div>
     <div class="row"><label><input type="checkbox" id="cTao"> Tạo nhân vật khi acc chưa có</label></div>

@@ -73,5 +73,31 @@ function fakeHost(behave) {
   E.setCfg({ phut: 1, lap: true }); H.opened.length = 0; E.start(); for (let k = 0; k < 480; k++) await sleep(1000); const opened = H.opened.length; E.stop(); while (E.state().run.on) await sleep(1000);
   ok(opened > 12, `"chạy lại từ đầu": hết danh sách quay lại nhóm đầu (${opened} lượt mở trong 8 phút)`);
   ok(st.m['vll.accs'] && st.m['vll.cfg'] && st.m['vll.cycle'], 'lưu acc / cài đặt / tiến độ');
+  // ---- đổi IP theo nhóm (proxy) ----
+  const P = E.parseProxies('1.1.1.1:8080\n2.2.2.2:3128:u2:p2\nu3:p3@px3.vn:8000\nsocks5://4.4.4.4:1080\nhttp://u5:p5@5.5.5.5:80\n# chú thích\nrác\n6.6.6.6:99999');
+  ok(P.length === 7 && P[0].host === '1.1.1.1' && P[0].port === 8080 && P[1].user === 'u2' && P[1].pass === 'p2' && P[2].host === 'px3.vn' && P[2].user === 'u3' && P[3].scheme === 'socks5' && P[4].scheme === 'http' && P[4].user === 'u5' && P[5].bad && P[6].bad, 'đọc 5 kiểu proxy, báo dòng lỗi / cổng sai');
+  E.stop(); while (E.state().run.on) await sleep(1000);
+  const proxCalls = []; let order = [];
+  H.dec = s => s.startsWith('ENC') ? 'abc123' : s.startsWith('PX:') ? s.slice(3) : '';
+  H.proxy = p => { proxCalls.push(p && p.label); order.push('proxy:' + (p ? p.label : 'thật')); if (p && p.host === '9.9.9.9') return { ok: false, why: 'hết thời gian' }; return { ok: true, ip: p ? '103.0.0.' + p.host.split('.')[0] : '45.45.45.45' }; };
+  const open0 = H.open; H.open = (i, c) => { order.push('open:' + c.user); open0(i, c); };
+  E.resetToday(); E.setCfg({ ip: true, nhom: 3, phut: 1, lap: false, proxyEnc: 'PX:1.1.1.1:8080\n9.9.9.9:80\n3.3.3.3:80' });
+  ok(E.state().cfg.nhom === 3, 'cho chọn nhóm 3 acc');
+  E.start(); while (E.state().run.on) await sleep(1000);
+  const opensAfter = k => { const i = order.indexOf(k); return i >= 0 ? order.slice(i + 1).find(x => x.startsWith('proxy:')) : null; };
+  ok(order[0].startsWith('proxy:') && order[1].startsWith('open:'), 'đổi IP trước khi mở ô đầu tiên');
+  const grp = order.filter(x => x.startsWith('open:') && !/tải lại/.test(x)).length;
+  ok(proxCalls.filter(x => x && x !== '9.9.9.9:80').length === 4, `12 acc / 3 = 4 nhóm → 4 lần đổi IP thành công (${proxCalls.join(', ')})`);
+  ok(proxCalls[0] === '1.1.1.1:8080' && proxCalls[1] === '9.9.9.9:80' && proxCalls[2] === '3.3.3.3:80', 'nhóm 2: proxy 2 lỗi → tự chuyển proxy 3');
+  ok(proxCalls.filter(x => x === '9.9.9.9:80').length === 1, 'proxy lỗi không thử lại trong cùng lượt');
+  ok(proxCalls[proxCalls.length - 1] === null, 'chạy xong → trả về IP thật');
+  ok(E.state().logs.some(l => /nhóm 1: proxy 1 \(1\.1\.1\.1:8080\) → IP 103\.0\.0\.1/.test(l)), 'nhật ký ghi IP từng nhóm');
+  // mọi proxy lỗi
+  H.proxy = p => { proxCalls.push(p && p.label); return p ? { ok: false, why: 'chết' } : { ok: true, ip: '45.45.45.45' }; };
+  E.resetToday(); E.setCfg({ ipHet: 'dung' }); H.opened.length = 0; E.start(); while (E.state().run.on) await sleep(1000);
+  ok(H.opened.length === 0 && E.state().logs.some(l => /mọi proxy đều lỗi → dừng/.test(l)), 'mọi proxy lỗi + "dừng chạy" → không mở ô nào');
+  E.resetToday(); E.setCfg({ ipHet: 'that' }); H.opened.length = 0; E.start(); while (E.state().run.on) await sleep(1000);
+  ok(H.opened.length > 0 && E.state().logs.some(l => /chạy bằng IP thật/.test(l)), 'mọi proxy lỗi + "chạy bằng IP thật" → vẫn chạy');
+  E.setCfg({ proxyEnc: '' }); E.start(); ok(!E.state().run.on && E.state().logs.some(l => /danh sách proxy trống/.test(l)), 'bật đổi IP mà danh sách trống → không chạy');
   console.log(`\n${pass}/${pass + fail} đạt`); process.exit(fail ? 1 : 0);
 })().catch(e => { console.error(e); process.exit(1); });

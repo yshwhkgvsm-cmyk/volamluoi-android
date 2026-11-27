@@ -16,6 +16,8 @@ window.VLLHost = {
   toGame: (i, ch, a) => { const args = JSON.parse(a); __calls.push(['toGame', i, ch]);
     if (ch === 'lab:sched:cmd') rep(i, ['lab:sched:reply', args[0], { ok: true, got: ['điểm danh'], knbDone: true }]);
     if (ch === 'ui:cmd' && args[0] === 'delegate') rep(i, ['game:delegated']); },
+  setProxy: (id, j) => { const p = JSON.parse(j); __calls.push(['setProxy', p && p.host]); setTimeout(() => vllOnProxy(id, JSON.stringify(p ? { ok: true, ip: '103.9.9.' + p.host.split('.')[3] } : { ok: true, ip: '45.1.1.1' })), 50); },
+  checkProxy: (id, j) => { const p = JSON.parse(j); setTimeout(() => vllOnProxy(id, JSON.stringify(p.host === '9.9.9.9' ? { ok: false, why: 'hết thời gian' } : { ok: true, ip: '103.9.9.' + p.host.split('.')[3] })), 50); },
   show: m => __calls.push(['show', m]), enc: s => 'E:' + s, dec: s => s.slice(2), multiProfile: () => 'true',
   toast: m => __calls.push(['toast', m]), keepAlive: b => __calls.push(['keepAlive', b]), keepScreen: b => __calls.push(['keepScreen', b]), share: (t, n) => __calls.push(['share', n]), dropProfile: u => __calls.push(['drop', u])
 };"""
@@ -39,8 +41,18 @@ with sync_playwright() as p:
     chk(pg.evaluate("JSON.parse(localStorage.getItem('vll.accs'))[0].pass") == 'E:abc123', 'mật khẩu lưu dạng đã mã hóa (qua Keystore)')
     pg.screenshot(path=str(T / 'shot-acc.png'), full_page=True)
     pg.click('nav [data-t=cfg]')
-    chk(pg.locator('#cNhom button').count() == 5 and pg.locator('#cNhom button.on').inner_text() == '4', 'chọn nhóm 4–8 acc (đang 4)')
+    chk(pg.locator('#cNhom button').count() == 6 and pg.locator('#cNhom button.on').inner_text() == '4', 'chọn nhóm 3–8 acc (đang 4)')
+    pg.click('#cIp'); chk(not pg.is_checked('#cIp') and any(c[0] == 'toast' and 'proxy' in c[1] for c in pg.evaluate('__calls')), 'bật đổi IP khi chưa có proxy → nhắc')
+    pg.fill('#cProxy', '1.1.1.11:8080\n9.9.9.9:80\nuser:pw@2.2.2.22:3128\nrác'); pg.press('#cProxy', 'Tab'); pg.wait_for_timeout(150)
+    chk('3 proxy hợp lệ' in pg.inner_text('#cProxyInfo') and 'dòng lỗi' in pg.inner_text('#cProxyInfo'), 'đếm proxy hợp lệ + báo dòng lỗi')
+    chk(pg.evaluate("JSON.parse(localStorage.getItem('vll.cfg')).proxyEnc").startswith('E:'), 'danh sách proxy lưu dạng mã hóa')
+    pg.click('#cProxyTest'); pg.wait_for_timeout(800); t = pg.inner_text('#cProxyRes')
+    chk('IP 103.9.9.11' in t and 'hết thời gian' in t and 'IP 103.9.9.22' in t, 'Kiểm tra proxy: hiện IP từng proxy, báo proxy chết')
+    pg.on('dialog', lambda d: d.accept()); pg.click('#cIp'); pg.wait_for_timeout(150)
+    chk(pg.is_checked('#cIp') and pg.evaluate("JSON.parse(localStorage.getItem('vll.cfg')).nhom") == 3, 'bật đổi IP → hỏi và đặt nhóm 3 acc / 1 IP')
+    pg.click('#cIp'); pg.wait_for_timeout(100)
     pg.click('#cNhom button[data-v="6"]'); pg.wait_for_timeout(100); chk(pg.evaluate("JSON.parse(localStorage.getItem('vll.cfg')).nhom") == 6, 'đổi sang nhóm 6')
+    pg.screenshot(path=str(T / 'shot-proxy.png'), full_page=True)
     pg.click('#cPhutQ button[data-v="1"]'); pg.wait_for_timeout(100); chk(pg.input_value('#cPhut') == '1', 'chọn nhanh 1 phút/nhóm')
     pg.fill('#cPhut', '180'); pg.press('#cPhut', 'Tab'); chk(pg.evaluate("JSON.parse(localStorage.getItem('vll.cfg')).phut") == 180, 'gõ 180 phút')
     pg.fill('#cPhut', '1'); pg.press('#cPhut', 'Tab')

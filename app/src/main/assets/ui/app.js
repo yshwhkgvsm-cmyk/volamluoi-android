@@ -8,8 +8,17 @@
     reload: (i, c) => call('reload', i, JSON.stringify(c)),
     close: i => call('close', i),
     send: (i, ch, args) => call('toGame', i, ch, JSON.stringify(args || [])),
-    dec: s => call('dec', s) || ''
+    dec: s => call('dec', s) || '',
+    // proxy: Java đặt proxy cho mọi ô rồi kiểm IP → gọi lại window.vllOnProxy(id, kết quả). p = null → bỏ proxy (IP thật).
+    proxy: p => ask('setProxy', p), check: p => ask('checkProxy', p)
   };
+  const pend = {}; let pid = 0;
+  function ask(fn, p) {
+    return new Promise(res => { const id = 'p' + (++pid); const t = setTimeout(() => { delete pend[id]; res({ ok: false, why: 'quá 40 giây không có kết quả' }); }, 40000);
+      pend[id] = r => { clearTimeout(t); delete pend[id]; res(r); };
+      if (call(fn, id, JSON.stringify(p || null)) === null && typeof H[fn] !== 'function') pend[id]({ ok: false, why: 'app chưa hỗ trợ proxy' }); });
+  }
+  window.vllOnProxy = (id, json) => { const f = pend[id]; if (f) { let r; try { r = JSON.parse(json); } catch { r = { ok: false, why: 'kết quả lạ' }; } f(r); } };
   const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
   const E = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const toast = m => call('toast', m) == null && console.log(m);
@@ -34,7 +43,8 @@
     $('#sNhom').textContent = S.run.on ? `${S.run.batch}/${S.run.batches}` : '–';
     $('#sCon').textContent = S.run.on ? fmt(S.run.deadline - Date.now()) : '–';
     $('#sXong').textContent = `${done}/${active}`;
-    $('#sum').textContent = S.run.on ? `vòng ${S.run.round} · nhóm ${S.cfg.nhom} acc · ${S.cfg.phut} phút/nhóm` : `${active} acc · nhóm ${S.cfg.nhom} · ${S.cfg.phut} phút/nhóm`;
+    $('#sum').textContent = (S.run.on ? `vòng ${S.run.round} · nhóm ${S.cfg.nhom} acc · ${S.cfg.phut} phút/nhóm` : `${active} acc · nhóm ${S.cfg.nhom} · ${S.cfg.phut} phút/nhóm`) + (S.cfg.ip ? ' · đổi IP mỗi nhóm' : '');
+    $('#ipNow').innerHTML = S.run.on && S.cfg.ip ? `🌐 IP nhóm này: <b>${E(S.run.ip || '…')}</b> <span class="mu">(${E(S.run.proxy || '')})</span>` : '';
     const n = Math.max(4, S.cfg.nhom); let h = '';
     for (let i = 0; i < n; i++) { const s = S.slots[i];
       h += s ? `<div class="slot" data-i="${i}"><b>${E(s.user)}</b><span class="st ${s.st === 'lỗi' ? 'bad' : s.st === 'xong' ? 'ok' : ''}">${E(s.st)}</span>${s.name || s.lv ? `<div class="mu">${E(s.name || '')} ${s.lv ? 'cấp ' + E(s.lv) : ''}</div>` : ''}${s.msg ? `<div class="mu bad">${E(s.msg).slice(0, 80)}</div>` : ''}</div>`
@@ -66,10 +76,21 @@
   bind('#cLap', 'lap'); bind('#cDk', 'dangKy'); bind('#cTao', 'taoNv'); bind('#cKnb', 'knb'); bind('#cHb', 'hb'); bind('#cUt', 'uyThac');
   bind('#cPhut', 'phut', el => +el.value); bind('#cVao', 'vaoGame', el => +el.value);
   bind('#cHe', 'he', el => el.value); bind('#cSex', 'sex', el => el.value); bind('#cTen', 'tenKieu', el => el.value); bind('#cTenTien', 'tenTien', el => el.value.trim());
+  let proxyDirty = false;
+  $('#cIp').onchange = e => { if (e.target.checked && !eng.parseProxies($('#cProxy').value).some(x => !x.bad)) { e.target.checked = false; return toast('Dán danh sách proxy trước'); } if (e.target.checked && eng.state().cfg.nhom > 3 && confirm('Đặt mỗi nhóm 3 acc / 1 IP?')) eng.setCfg({ nhom: 3 }); eng.setCfg({ ip: e.target.checked }); render(true); };
+  $('#cIpHet').onchange = e => { eng.setCfg({ ipHet: e.target.value }); };
+  $('#cProxy').oninput = () => { proxyDirty = true; render(true); };
+  $('#cProxy').onchange = () => { const t = $('#cProxy').value.trim(); const enc = t ? call('enc', t) : ''; if (t && !enc) return toast('không mã hóa được danh sách proxy'); eng.setCfg({ proxyEnc: enc }); proxyDirty = false; render(true); };
+  $('#cProxyTest').onclick = async e => { $('#cProxy').onchange(); e.target.disabled = true; e.target.textContent = 'Đang kiểm…'; const r = await eng.testProxies(); e.target.disabled = false; e.target.textContent = 'Kiểm tra proxy';
+    $('#cProxyRes').innerHTML = r.map(x => `<div>${x.k}. ${E(x.label)}: ${x.ok ? `<span class="ok">IP ${E(x.ip)}</span>` : `<span class="bad">${E(x.why)}</span>`}</div>`).join('') || 'danh sách trống'; };
   $('#cAwake').onchange = e => { localStorage.setItem('vll.awake', e.target.checked ? '1' : ''); if (eng.state().run.on) call('keepScreen', e.target.checked); };
   function renderCfg(S) {
     const c = S.cfg;
-    chips($('#cNhom'), [4, 5, 6, 7, 8], c.nhom, v => eng.setCfg({ nhom: v }));
+    chips($('#cNhom'), [3, 4, 5, 6, 7, 8], c.nhom, v => eng.setCfg({ nhom: v }));
+    $('#cIp').checked = !!c.ip; $('#cIpHet').value = c.ipHet || 'dung';
+    if (document.activeElement !== $('#cProxy') && !proxyDirty) { $('#cProxy').value = c.proxyEnc ? (call('dec', c.proxyEnc) || '') : ''; }
+    const L = eng.parseProxies($('#cProxy').value), good = L.filter(x => !x.bad).length, badL = L.filter(x => x.bad);
+    $('#cProxyInfo').innerHTML = `${good} proxy hợp lệ${badL.length ? ` · <span class="bad">${badL.length} dòng lỗi: ${E(badL[0].bad)}</span>` : ''}${good && S.accs.length ? ` · ${Math.ceil(S.accs.filter(a => !a.off).length / c.nhom)} nhóm / lượt` : ''}`;
     chips($('#cPhutQ'), [1, 2, 5, 10, 15, 30, 60, 90, 120, 180], c.phut, v => eng.setCfg({ phut: v }), v => v + "'");
     for (const [s, k] of [['#cLap', 'lap'], ['#cDk', 'dangKy'], ['#cTao', 'taoNv'], ['#cKnb', 'knb'], ['#cHb', 'hb'], ['#cUt', 'uyThac']]) $(s).checked = !!c[k];
     for (const [s, k] of [['#cPhut', 'phut'], ['#cVao', 'vaoGame'], ['#cHe', 'he'], ['#cSex', 'sex'], ['#cTen', 'tenKieu'], ['#cTenTien', 'tenTien']]) if (document.activeElement !== $(s)) $(s).value = c[k];

@@ -133,6 +133,10 @@ public class MainActivity extends Activity {
         main.post(() -> ui.evaluateJavascript("window.vllOnGame&&vllOnGame(" + i + "," + JSONObject.quote(json) + ")", null));
     }
 
+    void proxyDone(final String id, final String json) {
+        main.post(() -> ui.evaluateJavascript("window.vllOnProxy&&vllOnProxy(" + JSONObject.quote(id) + "," + JSONObject.quote(json) + ")", null));
+    }
+
     void slotEvent(final int i, final String ev) {
         main.post(() -> ui.evaluateJavascript("window.vllOnSlot&&vllOnSlot(" + i + "," + JSONObject.quote(ev) + ")", null));
     }
@@ -146,6 +150,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         for (GameSlot g : slots) g.close();
+        if (ProxyMan.cur != null) ProxyMan.apply(this, null, r -> { });   // tắt app → bỏ proxy
         try { ui.destroy(); } catch (Exception ignored) { }
         stopService(new Intent(this, KeepAliveService.class));
         super.onDestroy();
@@ -187,6 +192,16 @@ public class MainActivity extends Activity {
                     Toast.makeText(MainActivity.this, "Không gửi được: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
+        }
+        /** Đổi proxy cho mọi ô (json "null" = về IP thật), kiểm IP xong gọi lại vllOnProxy(id, kết quả). */
+        @JavascriptInterface public void setProxy(final String id, final String json) {
+            main.post(() -> ProxyMan.apply(MainActivity.this, ProxyMan.parse(json), r -> proxyDone(id, r)));
+        }
+        /** Chỉ kiểm proxy (không áp cho ô game). */
+        @JavascriptInterface public void checkProxy(final String id, final String json) {
+            ProxyMan.P p = ProxyMan.parse(json);
+            if (p == null) { proxyDone(id, ProxyMan.err("proxy sai dạng")); return; }
+            ProxyMan.check(p, r -> proxyDone(id, r));
         }
         boolean ok(int i) { return i >= 0 && i < MAX_SLOTS; }
     }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chỉ cho phép http thường tới các trang trả IP (kiểm IP qua proxy). Game vẫn đi https. -->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">api.ipify.org</domain>
+        <domain includeSubdomains="false">ipv4.icanhazip.com</domain>
+        <domain includeSubdomains="false">ifconfig.me</domain>
+    </domain-config>
+</network-security-config>
